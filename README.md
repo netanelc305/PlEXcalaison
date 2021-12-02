@@ -1,4 +1,4 @@
-# Local Privilege PlEXcalasion 
+# Local Privilege PlEXcalasion -  CVE-2021-42835
 
 ## Discovered by
 Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
@@ -11,7 +11,7 @@ Plex for windows uses PlexUpdateService.exe to install new updates. The service 
 
 A design flaw exists in this process, After integrity and signature check, the file is closed and reopened later for installation.
 
-This flaw allows an attacker to swap the update file with malicious one as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
+This flaw allows an attacker to swap the update file with a malicious one as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
 
  
 
