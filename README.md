@@ -7,7 +7,7 @@ The exploit levrage A Time Of Check Time Of Use (TOCTOU) vulnerabilry, allow a l
 
  
 
-This POC use tools developed by James Forshaw with slight modifications, The original can be found [here][https://github.com/googleprojectzero/symboliclink-testing-tools]
+This POC use tools developed by James Forshaw with slight modifications, The original can be found here - https://github.com/googleprojectzero/symboliclink-testing-tools
 
 In addition to the above tools , we have created an RPC client that will trigger the update.
 
