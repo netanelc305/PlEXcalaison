@@ -4,7 +4,7 @@
 Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
 
 ## Description
-Plex Media Server for Windows, vulnerable to Time Of Check Time Of Use (TOCTOU) that allows low privilege users to gain SYSTEM privileges. 
+Plex Media Server for Windows prior to version 1.25.0.5282, vulnerable to Time Of Check Time Of Use (TOCTOU) that allows low privilege users to gain SYSTEM privileges. 
 
 ## Details
 Plex for windows uses PlexUpdateService.exe to install new updates. The service is running in the SYSTEM context. When installing an update, the service first verifies file integrity and digital signature, only if the checks were successful the update will be installed.
@@ -26,7 +26,7 @@ We found that the file access order was as follow:
 5. Read the update file again
 6. Execute the installation
 
-We created a mount point on the junction folder to point to the valid folder(which contains the valid update).
+We created a mount point on the junction folder to point to a folder that contains the valid update file.
 Set opLock on cacert.pem with a callback function, As soon as it acess we change the mount point to the malicious folder.
 
 In addition, we have created an RPC client that will trigger the update.
