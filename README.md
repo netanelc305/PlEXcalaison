@@ -4,14 +4,14 @@
 Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
 
 ## Description
-Plex Media Server for windows vulnerable to Time Of Check Time Of Use (TOCTOU) which allows low privilege users to gain SYSTEM privileges. 
+Plex Media Server for Windows, vulnerable to Time Of Check Time Of Use (TOCTOU) allows low privilege users to gain SYSTEM privileges. 
 
 ## Details
-Plex for windows used PlexUpdateService.exe to install new updates. the service is running in the SYSTEM context. When installing the update, the service will first verify the update file was not modified and was signed by plex only then the new update will be installed.
+Plex for windows uses PlexUpdateService.exe to install new updates. The service is running in the SYSTEM context. When installing an update, the service first verifies file integrity and digital signature, only if the checks were successful the update will be installed.
 
-However, A design flow exists in this process. After the integrity and signature check, the file is closed and reopened later for installation.
+A design flaw exists in this process, After integrity and signature check, the file is closed and reopened later for installation.
 
-This flaw allows an attacker to swap the update file as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
+This flaw allows an attacker to swap the update file with malicious one as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
 
  
 
