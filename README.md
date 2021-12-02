@@ -4,12 +4,12 @@
 Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
 
 ## Description
-Plex Media Server for Windows, vulnerable to Time Of Check Time Of Use (TOCTOU) allows low privilege users to gain SYSTEM privileges. 
+Plex Media Server for Windows, vulnerable to Time Of Check Time Of Use (TOCTOU) that allows low privilege users to gain SYSTEM privileges. 
 
 ## Details
 Plex for windows uses PlexUpdateService.exe to install new updates. The service is running in the SYSTEM context. When installing an update, the service first verifies file integrity and digital signature, only if the checks were successful the update will be installed.
 
-A design flaw exists in this process, After integrity and signature check, the file is closed and reopened later for installation.
+At this process, After integrity and signature check, There was a design flow that handled the update file improperly. The file was closed and reopened later for installation.
 
 This flaw allows an attacker to swap the update file with a malicious one as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
  
@@ -24,10 +24,10 @@ We found that the file access order was as follow:
 3. Read CACERT.pem
 4. verify the signature.
 5. Read the update file again
-6. Execute installtion
+6. Execute the installation
 
 We created a mount point on the junction folder to point to the valid folder(which contains the valid update).
-Set opLock on cacert.pem with a callback function, as soon he accessed we change the mount point to the malicious folder.
+Set opLock on cacert.pem with a callback function, As soon as it acess we change the mount point to the malicious folder.
 
 In addition, we have created an RPC client that will trigger the update.
 
