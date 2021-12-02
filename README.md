@@ -58,6 +58,6 @@ static LPCWSTR cacert = L"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Reso
 
 ## Publications
 https://ir-on.io/2021/12/02/local-privilege-plexcalation/
-
+https://forums.plex.tv/t/security-regarding-cve-2021-42835/761510
 
 
