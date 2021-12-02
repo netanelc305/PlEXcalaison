@@ -1,15 +1,23 @@
 # Local Privilege PlEXcalasion 
 
-PlEXcalasion is a local privilige escalasion in Plex media server for windows.
-Discoverd by Tomer Peled, Netanel Cohen and Amir Shen a security researchers at BugSec Israel.
+## Discovered by
+Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
 
-The exploit levrage A Time Of Check Time Of Use (TOCTOU) vulnerabilry, allow a low privilige user gain SYSTEM priviliges.
+## Description
+Plex Media Server for windows vulnerable to Time Of Check Time Of Use (TOCTOU) which allows low privilege users to gain SYSTEM privileges. 
+
+## Details
+Plex for windows used PlexUpdateService.exe to install new updates. the service is running in the SYSTEM context. When installing the update, the service will first verify the update file was not modified and was signed by plex only then the new update will be installed.
+
+However, A design flow exists in this process. After the integrity and signature check, the file is closed and reopened later for installation.
+
+This flaw allows an attacker to swap the update file as soon as the service is finished to verify the integrity and signature, resulting in code execution in the SYSTEM context.
 
  
 
-This POC use tools developed by James Forshaw with slight modifications, The original can be found here - https://github.com/googleprojectzero/symboliclink-testing-tools
+This POC use tools developed by James Forshaw with slight modifications. The original can be found here - https://github.com/googleprojectzero/symboliclink-testing-tools
 
-In addition to the above tools , we have created an RPC client that will trigger the update.
+In addition we have created an RPC client that will trigger the update.
 
 
 
@@ -17,8 +25,6 @@ In addition to the above tools , we have created an RPC client that will trigger
 ## Usage
 
 1. Clone the repository and open PlEXcalasion.sln in Visual Studio.
-
-
 2. Modify Paths:
 
 PlexClient/PlexClient.cpp replace ROOTDIR with your path.
@@ -34,9 +40,8 @@ static LPCWSTR cacert = L"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Reso
 ```
 
 3. Build the solution.
-4. Make sure a PlexClient.exe file was created in the Release dir.
-5. Put the desired executeable file u want to execute as system in the malicious folder and name it plex.exe (for the poc i used cmd.exe)
-
+4. Make sure a PlexClient.exe was created and can be found on Rleases dir.
+5. Put the desired executeable file you want to execute as system in the malicious folder and rename it to plex.exe (for the poc i used cmd.exe)
 6. Execute BiteAndSwap.exe
 
 
