@@ -19,13 +19,12 @@ This POC use tools developed by James Forshaw with slight modifications. The ori
 To achieve the above we used a Junction folder that will first point to a folder containing a valid update file and then will swap to a folder containing the malicious file.
 
 We found that the file access order was as follow:
-1. read the update file.
-2. close the file.
-3. read cacert.pem
+1. Read the update file to check its digital signature
+2. Close the update file.
+3. Read CACERT.pem
 4. verify the signature.
-5. close cacert.pem
-6. read the update file.
-7. install.
+5. Read the update file again
+6. Execute installtion
 
 We created a mount point on the junction folder to point to the valid folder(which contains the valid update).
 Set opLock on cacert.pem with a callback function, as soon he accessed we change the mount point to the malicious folder.
