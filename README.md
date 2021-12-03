@@ -1,10 +1,9 @@
 # Local Privilege PlEXcalasion -  CVE-2021-42835
 
+Plex Media Server for Windows prior to version 1.25.0.5282, vulnerable to Time Of Check Time Of Use (TOCTOU) that allows low privilege users to gain SYSTEM privileges. 
+
 ## Discovered by
 Tomer Peled, Netanel Cohen, and Amir Shen a Security Researchers from BugSec.
-
-## Description
-Plex Media Server for Windows prior to version 1.25.0.5282, vulnerable to Time Of Check Time Of Use (TOCTOU) that allows low privilege users to gain SYSTEM privileges. 
 
 ## Details
 Plex for windows uses PlexUpdateService.exe to install new updates. The service is running in the SYSTEM context. When installing an update, the service first verifies file integrity and digital signature, only if the checks were successful the update will be installed.
