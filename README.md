@@ -53,7 +53,7 @@ static LPCWSTR cacert = L"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Reso
 3. Build the solution.
 4. Make sure a PlexClient.exe was created and can be found on Rleases dir.
 5. Put the desired executeable file you want to execute as system in the malicious folder and rename it to plex.exe (for the poc i used cmd.exe)
-6. Execute BiteAndSwap.exe
+6. Execute BiteAndSwitch.exe
 
 ## Publications
 https://ir-on.io/2021/12/02/local-privilege-plexcalation/
