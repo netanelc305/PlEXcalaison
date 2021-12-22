@@ -36,7 +36,8 @@ In addition, we have created an RPC client that will trigger the update.
 ## Usage
 
 1. Clone the repository and open PlEXcalasion.sln in Visual Studio.
-2. Modify Paths:
+2. Delete the Delete me.txt file located in TOCTOU\\junction - Its just place holder for git to include the folder , this folder must be empty!
+3. Modify Paths:
 
 PlexClient/PlexClient.cpp replace ROOTDIR with your path.
 ```cpp
@@ -50,10 +51,10 @@ static LPCWSTR target2 = L"<ROOTDIR>\\PlEXcalaison\\TOCTOU\\malicious"; // Path 
 static LPCWSTR cacert = L"C:\\Program Files (x86)\\Plex\\Plex Media Server\\Resources\\cacert.pem"; // Path to cacert.pem - can be found in plex directory.
 ```
 
-3. Build the solution.
-4. Make sure a PlexClient.exe was created and can be found on Rleases dir.
-5. Put the desired executeable file you want to execute as system in the malicious folder and rename it to plex.exe (for the poc i used cmd.exe)
-6. Execute BiteAndSwitch.exe
+4. Build the solution.
+5. Make sure a PlexClient.exe was created and can be found on Rleases dir.
+6. Put the desired executeable file you want to execute as system in the malicious folder and rename it to plex.exe (for the poc i used cmd.exe)
+7. Execute BiteAndSwitch.exe
 
 ## Publications
 https://ir-on.io/2021/12/02/local-privilege-plexcalation/
